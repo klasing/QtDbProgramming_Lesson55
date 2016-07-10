@@ -17,7 +17,9 @@ Dialog::Dialog(QWidget *parent) :
     if (!db.open()) qDebug() << db.lastError().text();
 
     this->model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM [test].[dbo].[people]");
+    //model->setQuery("SELECT * FROM [test].[dbo].[people]");
+    // use a SQL Server View, called people_place, as a sql select statement
+    model->setQuery("SELECT * FROM [test].[dbo].[people_place]");
 
     ui->tableView->setModel(model);
 }
